@@ -1,0 +1,27 @@
+{
+  "name": "event-sourcing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "eslint": "^4.9.0",
+    "eslint-config-google": "^0.9.1",
+    "mocha": "^3.5.3",
+    "snyk": "^1.44.1",
+    "stryker": "^0.11.2",
+    "stryker-api": "^0.9.0",
+    "stryker-html-reporter": "^0.9.1",
+    "stryker-mocha-framework": "^0.5.0",
+    "stryker-mocha-runner": "^0.8.1"
+  }
+}
