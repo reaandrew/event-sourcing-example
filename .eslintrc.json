@@ -1,11 +1,19 @@
 {
-  "extends": ["eslint:recommended", "google"],
-  "env": {
-    "node": true,
-    "mocha": true,
-    "es6": true
-  },
-  "rules": {
-    // Additional, per-project rules...
-  }
+    "extends": ["eslint:recommended", "google"],
+    "env": {
+        "node": true,
+        "mocha": true,
+        "es6": true
+    },
+    "rules": {
+        "require-jsdoc": ["error", {
+            "require": {
+                "FunctionDeclaration": false,
+                "MethodDefinition": false,
+                "ClassDeclaration": false,
+                "ArrowFunctionExpression": false,
+                "FunctionExpression": false
+            }
+        }]
+    }
 }
