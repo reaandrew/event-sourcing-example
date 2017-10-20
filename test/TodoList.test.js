@@ -11,6 +11,10 @@ describe('TodoList Tests', () => {
             name: expectedName,
         });
 
+        it('assigns an aggregateID', () => {
+            should(todoList.aggregateID).not.equal(undefined);
+        });
+
         it('adds a TodoListCreatedEvent', () => {
             todoList.uncommittedEvents().length.should.equal(1);
 
