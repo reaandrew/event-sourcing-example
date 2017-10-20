@@ -4,7 +4,7 @@ test: dev_deps
 
 .PHONY: lint
 lint: dev_deps
-	./node_modules/eslint/bin/eslint.js --fix .
+	./node_modules/eslint/bin/eslint.js .
 
 .PHONY: cvm
 cvm: dev_deps
@@ -19,4 +19,4 @@ mutation:
 	./node_modules/stryker/bin/stryker run stryker.conf.js
 
 .PHONY: build
-build: cvm lint test mutation
+build: lint test mutation
