@@ -26,6 +26,10 @@ describe('TodoList Tests', () => {
         it('updates the version of the aggregate to 1', () => {
             todoList.aggregateVersion().should.equal(1);
         });
+
+        it.only('assigns an id', () => {
+            should(todoList.uncommittedEvents()[0].id).not.equal(undefined);
+        });
     });
 
     describe('Adding a todo', () => {
