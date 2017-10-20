@@ -30,8 +30,12 @@ describe('TodoList Tests', () => {
             todoList.name.should.equal(expectedName);
         });
 
+        it('assigns aggregate id to event', () => {
+          should(todoList.uncommittedEvents[0].aggregateId).equal(todoList.id);
+        });
+
         it('updates the version of the aggregate to 1', () => {
-            todoList.aggregateVersion().should.equal(1);
+          should(todoList.uncommittedEvents[0].version).equal(1);
         });
 
         it('assigns an id', () => {
@@ -66,9 +70,17 @@ describe('TodoList Tests', () => {
             should(todoList.uncommittedEvents[1].timestamp).equal(d);
         });
 
+        it('assigns aggregate id to event', () => {
+          should(todoList.uncommittedEvents[1].aggregateId).equal(todoList.id);
+        });
+
         describe('Completing a todo', () => {
             before((done) => {
                 todoList.complete('get the milk', done);
+            });
+
+            it('assigns aggregate id to event', () => {
+              should(todoList.uncommittedEvents[2].aggregateId).equal(todoList.id);
             });
 
             it('Adds an uncommitted event of TodoCompleted', () => {
