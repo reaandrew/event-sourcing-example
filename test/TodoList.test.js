@@ -19,9 +19,9 @@ describe('TodoList Tests', () => {
         });
 
         it('adds a TodoListCreatedEvent', () => {
-            todoList.uncommittedEvents().length.should.equal(1);
+            todoList.uncommittedEvents.length.should.equal(1);
 
-            let event = todoList.uncommittedEvents()[0];
+            let event = todoList.uncommittedEvents[0];
 
             should(event.name).not.equal(undefined);
 
@@ -35,11 +35,11 @@ describe('TodoList Tests', () => {
         });
 
         it('assigns an id', () => {
-            should(todoList.uncommittedEvents()[0].eventId).not.equal(undefined);
+            should(todoList.uncommittedEvents[0].eventId).not.equal(undefined);
         });
 
         it('assigns a timestamp', () => {
-            should(todoList.uncommittedEvents()[0].timestamp).equal(d);
+            should(todoList.uncommittedEvents[0].timestamp).equal(d);
         });
     });
 
@@ -55,15 +55,15 @@ describe('TodoList Tests', () => {
         }));
 
         it('Adds an uncommitted event of TodoAdded', () => {
-            todoList.uncommittedEvents().length.should.equal(2);
+            todoList.uncommittedEvents.length.should.equal(2);
         });
 
         it('assigns an id', () => {
-            should(todoList.uncommittedEvents()[1].eventId).not.equal(undefined);
+            should(todoList.uncommittedEvents[1].eventId).not.equal(undefined);
         });
 
         it('assigns a timestamp', () => {
-            should(todoList.uncommittedEvents()[1].timestamp).equal(d);
+            should(todoList.uncommittedEvents[1].timestamp).equal(d);
         });
 
         describe('Completing a todo', () => {
@@ -72,15 +72,15 @@ describe('TodoList Tests', () => {
             });
 
             it('Adds an uncommitted event of TodoCompleted', () => {
-                todoList.uncommittedEvents().length.should.equal(3);
+                todoList.uncommittedEvents.length.should.equal(3);
             });
 
             it('assigns an id', () => {
-                should(todoList.uncommittedEvents()[2].eventId).not.equal(undefined);
+                should(todoList.uncommittedEvents[2].eventId).not.equal(undefined);
             });
 
             it('assigns a timestamp', () => {
-                should(todoList.uncommittedEvents()[2].timestamp).equal(d);
+                should(todoList.uncommittedEvents[2].timestamp).equal(d);
             });
 
         });
