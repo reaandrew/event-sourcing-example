@@ -27,8 +27,8 @@ describe('TodoList Tests', () => {
             todoList.aggregateVersion().should.equal(1);
         });
 
-        it.only('assigns an id', () => {
-            should(todoList.uncommittedEvents()[0].id).not.equal(undefined);
+        it('assigns an id', () => {
+            should(todoList.uncommittedEvents()[0].eventId).not.equal(undefined);
         });
     });
 
@@ -45,6 +45,10 @@ describe('TodoList Tests', () => {
 
         it('Adds an uncommitted event of TodoAdded', () => {
             todoList.uncommittedEvents().length.should.equal(2);
+        });
+
+        it('assigns an id', () => {
+            should(todoList.uncommittedEvents()[1].eventId).not.equal(undefined);
         });
 
         describe('Completing a todo', () => {
