@@ -19,4 +19,4 @@ mutation:
 	./node_modules/stryker/bin/stryker run stryker.conf.js
 
 .PHONY: build
-build: lint test mutation
+build: lint test 

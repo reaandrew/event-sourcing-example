@@ -1,9 +1,6 @@
 let should = require('should');
 let TodoList = require('../lib/TodoList');
 let Todo = require('../lib/Todo');
-let TodoAdded = require('../lib/TodoAdded');
-let TodoCompleted = require('../lib/TodoCompleted');
-let TodoListCreated = require('../lib/TodoListCreated');
 
 describe('TodoList Tests', () => {
     describe('Creating a new Todo List', () => {
