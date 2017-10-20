@@ -11,12 +11,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "kafka-node": "^2.2.3",
+    "pg": "^7.3.0"
   },
   "devDependencies": {
     "eslint": "^4.9.0",
     "eslint-config-google": "^0.9.1",
     "mocha": "^3.5.3",
+    "should": "^13.1.2",
     "snyk": "^1.44.1",
     "stryker": "^0.11.2",
     "stryker-api": "^0.9.0",
