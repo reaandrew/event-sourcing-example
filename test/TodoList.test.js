@@ -78,6 +78,11 @@ describe('TodoList Tests', () => {
             it('assigns an id', () => {
                 should(todoList.uncommittedEvents()[2].eventId).not.equal(undefined);
             });
+
+            it('assigns a timestamp', () => {
+                should(todoList.uncommittedEvents()[2].timestamp).equal(d);
+            });
+
         });
     });
 
