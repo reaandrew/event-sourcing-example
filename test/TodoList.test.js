@@ -59,6 +59,10 @@ describe('TodoList Tests', () => {
             it('Adds an uncommitted event of TodoCompleted', () => {
                 todoList.uncommittedEvents().length.should.equal(3);
             });
+
+            it('assigns an id', () => {
+                should(todoList.uncommittedEvents()[2].eventId).not.equal(undefined);
+            });
         });
     });
 
