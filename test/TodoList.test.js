@@ -6,6 +6,8 @@ describe('TodoList Tests', () => {
     describe('Creating a new Todo List', () => {
         let todoList;
         let expectedName = 'House Duties';
+        let d = Date.now();
+        Date.now = () => d;
 
         todoList = new TodoList({
             name: expectedName,
@@ -33,6 +35,10 @@ describe('TodoList Tests', () => {
 
         it('assigns an id', () => {
             should(todoList.uncommittedEvents()[0].eventId).not.equal(undefined);
+        });
+
+        it('assigns a timestamp', () => {
+            should(todoList.uncommittedEvents()[0].timestamp).equal(d);
         });
     });
 
