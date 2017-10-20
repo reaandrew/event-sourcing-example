@@ -5,11 +5,17 @@ function TodoList(args){
     let self = {};
     let version = 0;
     let name;
+    let todos = [];
 
     let handlers = {};
     handlers['handleTodoListCreated'] = (evt) =>{
         version = evt.version;
         name = evt.name;
+    };
+
+    handlers['handleTodoAdded'] = (evt) => {
+        version = evt.version;
+        todos.push(evt.todo);
     };
 
     if (args !== undefined && args.id === undefined){
@@ -19,10 +25,16 @@ function TodoList(args){
     function apply(evt){
         if(version == 0){
             evt.version = 1;
+        }else{
+            evt.version = 100;
         }
 
         var eventName = evt.constructor.name;
         var method = 'handle'+eventName;
+
+        if (handlers[method] === undefined){
+            throw new Error('no handler for ' + method);
+        }
         handlers[method].call(self, evt);
 
         uncommittedEvents.push(evt);
@@ -32,11 +44,12 @@ function TodoList(args){
         return uncommittedEvents;
     };
 
-    self.version = () => {
+    self.aggregateVersion = () => {
         return version;
     };
 
     self.add = (todo) => {
+        apply(new TodoAdded(todo));
     };
 
     return self;
@@ -50,12 +63,18 @@ function TodoListCreated(args){
     this.name = args.name;
 }
 
+function TodoAdded(todo){
+    this.todo = todo;
+}
+
 describe('TodoList Tests', () => {
 
-    let todoList;
-    let expectedName = 'House Duties'
 
     describe('Creating a new Todo List', () => {
+
+        let todoList;
+        let expectedName = 'House Duties'
+
         todoList  = new TodoList({
             name: expectedName
         });
@@ -72,11 +91,22 @@ describe('TodoList Tests', () => {
         });
 
         it('updates the version of the aggregate to 1', () => {
-            todoList.version().should.equal(1);
+            todoList.aggregateVersion().should.equal(1);
         });
 
-        describe('Adding a todo', () => {
+    });
 
+    describe('Adding a todo', () => {
+        let todoList;
+        let expectedName = 'House Duties'
+        todoList  = new TodoList({
+            name: expectedName
+        });
+
+        todoList.add(new Todo('get the milk'));
+
+        it('Adds an uncommitted event of TodoAdded', () => {
+            todoList.uncommittedEvents().length.should.equal(2);
         });
     });
 
