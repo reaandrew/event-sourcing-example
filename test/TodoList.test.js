@@ -80,7 +80,8 @@ describe('TodoList Tests', () => {
             });
 
             it('assigns aggregate id to event', () => {
-              should(todoList.uncommittedEvents[2].aggregateId).equal(todoList.id);
+              should(todoList.uncommittedEvents[2].aggregateId)
+                    .equal(todoList.id);
             });
 
             it('Adds an uncommitted event of TodoCompleted', () => {
@@ -88,13 +89,13 @@ describe('TodoList Tests', () => {
             });
 
             it('assigns an id', () => {
-                should(todoList.uncommittedEvents[2].eventId).not.equal(undefined);
+                should(todoList.uncommittedEvents[2].eventId)
+                    .not.equal(undefined);
             });
 
             it('assigns a timestamp', () => {
                 should(todoList.uncommittedEvents[2].timestamp).equal(d);
             });
-
         });
     });
 
